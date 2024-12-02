@@ -1,114 +1,238 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
+ <head>
+  <title>
+   503 - HackLebaran
+  </title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<style>
-
-@font-face {
-  font-family: normal;
-  src: url(normal.ttf);
-}
-
-body {
-  background-color: lightblue;
-  font-family: normal;
-}
-
-h1 {
-  text-align: center;
-  font-size: 40px;
-  color: #000;
-  margin-top: 100px;
-}
-
-h2 {
-  text-align: center;
-  font-size: 20px;
-  color: #fff;
-  margin-top: 0px;
-  padding: 10px;
-  background-color: #7B583A;
-}
-
-p {
-  text-align: center;
-  font-size: 14px;
-  color: #000;
-  margin-top: 10px;
-}
-
-#container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-#buttons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-#banner {
-  background-color: #ff6347;
-  color: #fff;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-top: 50px;
-}
-
-.info {
-  background-color: #fff;
-  color: #000;
-  padding: 10px 20px;
-  border-radius: 5px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-}
-</style>
-</head>
-<body>
-<div id="container">
-  <h1>CBT EXAMBRO PRO</h1>
-  <h2>
-    UJIAN TANPA KERTAS
-    <p style="color: white;">Dengan adanya aplikasi ini, kalian dapat menghemat penggunaan kertas yang dapat terbuang sia-sia</p>
-  </h2>
-  <p>Pilih lah salah satu opsi berikut <br> jangan lupa baca instruksi dan logout dari web ujian setelah selesai. <b>E-ujian = server (E-1 = server1)</b></p>
-  <div id="buttons">
-    <a href="https://am-mankoraya.my.id">
-        <button class="button">E-Ujian 1</button>
-    </a>
-    <a href="https://mankotaplk.my.id">
-      <button class="button">E-Ujian 2</button>
-  </a>
-  <a href="about.html">
-    <button class="button">Instruksi</button>
-</a>
+  <style>
+   body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+        .header {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 18px;
+        }
+        .content {
+            background-color: #388eff;
+            color: #fff;
+            padding: 5px;
+            text-align: left;
+            position: relative;
+        }
+        .content img {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 100px;
+        }
+        .content h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .content p {
+            margin: 5px 0 20px;
+            font-size: 14px;
+        }
+        .main {
+            background-color: #fff;
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .main img {
+            padding-right: 20px;
+            width: 100%;
+            height: auto;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 15px;
+            justify-items: center;
+            padding: 15px;
+            align-items: center;
+            align-content: center;
+        }
+        .grid-item {
+            background-color: #388eff;
+            color: #fff;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .grid-item img {
+            width: 40px;
+            height: 40px;
+        }
+        .grid-item p {
+            margin: 5px 0 0;
+            font-size: 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            text-decoration: double;
+            color: #000;
+        }
+        @media (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .icontol img {
+            align-items: left;
+            left: 20px;
+            width: 30px;
+            top: 22px;
+            left: 7px;
+        }
+        .clock {
+            padding: 0px;
+        }
+  </style>
+   <script>
+    // clock
+  function startTime() {
+      const today = new Date();
+      let h = today.getHours();
+      let m = today.getMinutes();
+      let s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('clock').innerHTML =  h + ":" + m + ":" + s;
+      setTimeout(startTime, 1000);
+    }
+    
+    function checkTime(i) {
+      if (i < 10) {i = "0" + i};
+      return i;
+    }
+   </script>
+ </head>
+ <body onload="startTime()">
+  <div class="content">
+   <div class="clock">
+    <p style="text-align: left; padding: 0px;"><span id="clock"></span></p>
+   </div>
+  <div class="icontol">
+    <img alt="pagi le" height="30" src="asset/pagi.png" width="30" style="position: absolute; align-content: left;"/>
   </div>
-  <div id="banner">Made by CROWDX</div>
-  <a href="https://saweria.co/mbeknakal">
-  <div class="info">Plis donet dulu le</div>
-  </a>
-</div>
-</body>
+   <h1 style="text-align: left;">
+    Hallo, Selamat Pagi
+   </h1>
+   <p style="text-align: left;">
+    "Ilmu bukanlah apa yang dihafal, akan tetapi <br> yang bermanfaat"
+   </p>
+   <img alt="Selamat" height="100" src="asset/swlsmat.png" width="60" style="align-content: right;"/>
+  </div>
+  <div class="main">
+    <img src="asset/H2.png" alt="header le">
+  </div>
+  <div class="grid-container">
+   <a href="https://qrcodescan.in/">
+   <div class="grid-item">
+    <img alt="QR" height="40" src="asset/qr_code.png" width="40"/>
+    <p>
+     SCAN QRCODE
+    </p>
+   </div>
+   </a>
+   <a href="https://bing.com">
+   <div class="grid-item">
+    <img alt="isepkontol" height="40" src="asset/masuk.png" width="40"/>
+    <p>
+     MASUK URL
+    </p>
+   </div>
+   </a>
+   <a href="about.html">
+   <div class="grid-item">
+    <img alt="Ingfo" height="40" src="asset/info.png" width="40"/>
+    <p>
+     INFO
+    </p>
+   </div>
+   </a>
+  </div>
+   <div class="grid-container">
+   <a href="https://mankotaplk.my.id">
+   <div class="grid-item">
+    <img alt="Server 1" height="40" src="asset/eujian.png" width="40"/>
+    <p>
+     E-UJIAN 1
+    </p>
+   </div>
+   </a>
+   <a href="https://am-mankoraya.my.id">
+   <div class="grid-item">
+    <img alt="Server 2" height="40" src="asset/eujian.png" width="40"/>
+    <p>
+     E-UJIAN 2
+    </p>
+   </div>
+   </a>
+   <a href="#">
+   <div class="grid-item">
+    <img alt="Server 3" height="40" src="asset/eujian.png" width="40"/>
+    <p>
+     E-UJIAN 3
+    </p>
+   </div>
+   </a>
+   <a href="#">
+   <div class="grid-item">
+    <img alt="Default mode" height="40" src="asset/modedefault.png" width="40"/>
+    <p>
+     DEFAULT MODE
+    </p>
+   </div>
+   </a>
+   </div>
+   <div class="grid-container">
+    <a href="https://wir.mbeek.my.id/links">
+   <div class="grid-item">
+    <img alt="Developer" height="40" src="asset/dev.png" width="40"/>
+    <p>
+     DEVELOPER
+    </p>
+   </div>
+    </a>
+    <a href="https://wir.mbeek.my.id">
+   <div class="grid-item">
+    <img alt="Website icon" height="40" src="asset/WEB.png" width="40"/>
+    <p>
+     WEBSITE
+    </p>
+   </div>
+    </a>
+    <a href="about:blank">
+   <div class="grid-item">
+    <img alt="Exit icon" height="40" src="asset/keluar.png" width="40"/>
+    <p>
+     KELUAR
+    </p>
+   </div>
+    </a>
+  </div>
+  <div class="footer">
+   <b>CBT MANKORAYA 2024</b>
+  </div>
+ </body>
 </html>
