@@ -1,12 +1,12 @@
-<html>
- <head>
-  <title>
-   503 - HackLebaran
-  </title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-   body {
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>503 - HackLebaran</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+        body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
@@ -106,133 +106,179 @@
         .clock {
             padding: 0px;
         }
-  </style>
-   <script>
-    // clock
-  function startTime() {
-      const today = new Date();
-      let h = today.getHours();
-      let m = today.getMinutes();
-      let s = today.getSeconds();
-      m = checkTime(m);
-      s = checkTime(s);
-      document.getElementById('clock').innerHTML =  h + ":" + m + ":" + s;
-      setTimeout(startTime, 1000);
-    }
-    
-    function checkTime(i) {
-      if (i < 10) {i = "0" + i};
-      return i;
-    }
-   </script>
- </head>
- <body onload="startTime()">
-  <div class="content">
-   <div class="clock">
-    <p style="text-align: left; padding: 0px;"><span id="clock"></span></p>
-   </div>
-  <div class="icontol">
-    <img alt="pagi le" height="30" src="asset/pagi.png" width="30" style="position: absolute; align-content: left;"/>
-  </div>
-   <h1 style="text-align: left;">
-    Hallo, Selamat Pagi
-   </h1>
-   <p style="text-align: left;">
-    "Ilmu bukanlah apa yang dihafal, akan tetapi <br> yang bermanfaat"
-   </p>
-   <img alt="Selamat" height="100" src="asset/swlsmat.png" width="60" style="align-content: right;"/>
-  </div>
-  <div class="main">
-    <img src="asset/H2.png" alt="header le">
-  </div>
-  <div class="grid-container">
-   <a href="https://qrcodescan.in/">
-   <div class="grid-item">
-    <img alt="QR" height="40" src="asset/qr_code.png" width="40"/>
-    <p>
-     SCAN QRCODE
-    </p>
-   </div>
-   </a>
-   <a href="https://bing.com">
-   <div class="grid-item">
-    <img alt="isepkontol" height="40" src="asset/masuk.png" width="40"/>
-    <p>
-     MASUK URL
-    </p>
-   </div>
-   </a>
-   <a href="about.html">
-   <div class="grid-item">
-    <img alt="Ingfo" height="40" src="asset/info.png" width="40"/>
-    <p>
-     INFO
-    </p>
-   </div>
-   </a>
-  </div>
-   <div class="grid-container">
-   <a href="#">
-   <div class="grid-item">
-    <img alt="Server 1" height="40" src="asset/eujian.png" width="40"/>
-    <p>
-     SERVER 1
-    </p>
-   </div>
-   </a>
-   <a href="https://am-mankoraya.my.id">
-   <div class="grid-item">
-    <img alt="Server 2" height="40" src="asset/eujian.png" width="40"/>
-    <p>
-     SERVER 2
-    </p>
-   </div>
-   </a>
-   <a href="https://mankotaplk.my.id">
-   <div class="grid-item">
-    <img alt="Server 3" height="40" src="asset/eujian.png" width="40"/>
-    <p>
-     SERVER 3
-    </p>
-   </div>
-   </a>
-   <a href="#">
-   <div class="grid-item">
-    <img alt="Default mode" height="40" src="asset/modedefault.png" width="40"/>
-    <p>
-     DEFAULT MODE
-    </p>
-   </div>
-   </a>
-   </div>
-   <div class="grid-container">
-    <a href="https://wir.mbeek.my.id/links">
-   <div class="grid-item">
-    <img alt="Developer" height="40" src="asset/dev.png" width="40"/>
-    <p>
-     DEVELOPER
-    </p>
-   </div>
-    </a>
-    <a href="https://wir.mbeek.my.id">
-   <div class="grid-item">
-    <img alt="Website icon" height="40" src="asset/WEB.png" width="40"/>
-    <p>
-     WEBSITE
-    </p>
-   </div>
-    </a>
-    <a href="about:blank">
-   <div class="grid-item">
-    <img alt="Exit icon" height="40" src="asset/keluar.png" width="40"/>
-    <p>
-     KELUAR
-    </p>
-   </div>
-    </a>
-  </div>
-  <div class="footer">
-   <b>CBT MANKORAYA 2024</b>
-  </div>
- </body>
+
+        /* Pop-up Styles */
+        .popup {
+            display: none; /* Sembunyikan pop-up secara default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Latar belakang gelap */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+    <script>
+        // clock
+        function startTime() {
+            const today = new Date();
+            let h = today.getHours();
+            let m = today.getMinutes();
+            let s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('clock').innerHTML = h + ":" + m + ":" + s;
+            setTimeout(startTime, 1000);
+        }
+
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };
+            return i;
+        }
+
+        // Pop-up Script
+        document.addEventListener("DOMContentLoaded", function () {
+            // Tampilkan pop-up saat halaman dimuat
+            const popup = document.getElementById("popup");
+            popup.style.display = "flex";
+
+            // Tutup pop-up saat mengklik di mana pun di luar konten pop-up
+            popup.addEventListener("click", function (event) {
+                if (event.target === popup) {
+                    popup.style.display = "none";
+                }
+            });
+        });
+    </script>
+</head>
+<body onload="startTime()">
+    <!-- Pop-up -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <p>Info</p>
+            <p>Server 1: Up</p>
+            <p>Server 2: Down</p>
+            <p>Server 3: Pindah ke Server 1</p>
+        </div>
+    </div>
+
+    <!-- Konten Utama -->
+    <div class="content">
+        <div class="clock">
+            <p style="text-align: left; padding: 0px;"><span id="clock"></span></p>
+        </div>
+        <div class="icontol">
+            <img alt="pagi le" height="30" src="asset/pagi.png" width="30" style="position: absolute; align-content: left;" />
+        </div>
+        <h1 style="text-align: left;">
+            Hallo, Selamat Pagi
+        </h1>
+        <p style="text-align: left;">
+            "Ilmu bukanlah apa yang dihafal, akan tetapi <br> yang bermanfaat"
+        </p>
+        <img alt="Selamat" height="100" src="asset/swlsmat.png" width="60" style="align-content: right;" />
+    </div>
+    <div class="main">
+        <img src="asset/H2.png" alt="header le">
+    </div>
+    <div class="grid-container">
+        <a href="https://qrcodescan.in/">
+            <div class="grid-item">
+                <img alt="QR" height="40" src="asset/qr_code.png" width="40" />
+                <p>
+                    SCAN QRCODE
+                </p>
+            </div>
+        </a>
+        <a href="https://bing.com">
+            <div class="grid-item">
+                <img alt="isepkontol" height="40" src="asset/masuk.png" width="40" />
+                <p>
+                    MASUK URL
+                </p>
+            </div>
+        </a>
+        <a href="about.html">
+            <div class="grid-item">
+                <img alt="Ingfo" height="40" src="asset/info.png" width="40" />
+                <p>
+                    INFO
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="grid-container">
+        <a href="https://mankotaplk.my.id">
+            <div class="grid-item">
+                <img alt="Server 1" height="40" src="asset/eujian.png" width="40" />
+                <p>
+                    SERVER 1
+                </p>
+            </div>
+        </a>
+        <a href="https://am-mankoraya.my.id">
+            <div class="grid-item">
+                <img alt="Server 2" height="40" src="asset/eujian.png" width="40" />
+                <p>
+                    SERVER 2
+                </p>
+            </div>
+        </a>
+        <a href="#">
+            <div class="grid-item">
+                <img alt="Server 3" height="40" src="asset/eujian.png" width="40" />
+                <p>
+                    SERVER 3
+                </p>
+            </div>
+        </a>
+        <a href="#">
+            <div class="grid-item">
+                <img alt="Default mode" height="40" src="asset/modedefault.png" width="40" />
+                <p>
+                    DEFAULT MODE
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="grid-container">
+        <a href="https://wir.mbeek.my.id/links">
+            <div class="grid-item">
+                <img alt="Developer" height="40" src="asset/dev.png" width="40" />
+                <p>
+                    DEVELOPER
+                </p>
+            </div>
+        </a>
+        <a href="https://wir.mbeek.my.id">
+            <div class="grid-item">
+                <img alt="Website icon" height="40" src="asset/WEB.png" width="40" />
+                <p>
+                    WEBSITE
+                </p>
+            </div>
+        </a>
+        <a href="about:blank">
+            <div class="grid-item">
+                <img alt="Exit icon" height="40" src="asset/keluar.png" width="40" />
+                <p>
+                    KELUAR
+                </p>
+            </div>
+        </a>
+    </div>
+    <div class="footer">
+        <b>CBT MANKORAYA 2024</b>
+    </div>
+</body>
 </html>
