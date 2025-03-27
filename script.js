@@ -80,10 +80,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const userID = document.getElementById('userID').value;
             const message = `Wahai ${nama} dengan ID ${userID}, cheat telah selesai dikonfigurasi`;
             alert(message);
+            window.location.href = 'https://wir.mbeek.my.id/links';
         }
 
         this.classList.add('was-validated');
-        window.location.href = 'https://wir.mbeek.my.id/links';
     });
 
     welkam.addEventListener('click', function() {
