@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         this.classList.add('was-validated');
+        window.location.href = 'https://wir.mbeek.my.id/links';
     });
 
     welkam.addEventListener('click', function() {
